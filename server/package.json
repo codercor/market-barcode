@@ -1,0 +1,19 @@
+{
+  "name": "market-barcode-backend",
+  "version": "1.0.0",
+  "description": "This script is a backend for Market Barcode Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corxjs/market-barcode.git"
+  },
+  "author": "@corxjs & @kucin1316",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/corxjs/market-barcode/issues"
+  },
+  "homepage": "https://github.com/corxjs/market-barcode#readme"
+}
