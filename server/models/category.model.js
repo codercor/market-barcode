@@ -13,6 +13,6 @@ User.init({
     charset: "utf8",
 })
 
-User.sync({ force: true });
+//Usr.sync({ force: true });
 
 module.exports = User;
