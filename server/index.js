@@ -2,7 +2,9 @@ const express = require("express")
 const app = express();
 require("dotenv").config()
 
-const { category, product, user } = require("./models");
+
+app.use(express.json());
+
 const { product: productRouter } = require("./routes")
 
 app.use("/product", productRouter)

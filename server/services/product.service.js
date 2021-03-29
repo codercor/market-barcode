@@ -1,28 +1,23 @@
-const {product} =  require("../models")
+const { product } = require("../models")
 
-function add(productData) 
-{
+function add(productData) {
     return product.create(productData);
 }
 
-function deleteById(req,res) 
-{
+function deleteById(id) {
+    return product.destroy({ where: { id } })
+}
+
+function updateById(id, data) {
 
 }
 
-function updateById(req,res) 
-{
-
+function getAll() {
+    return product.findAll({})
 }
 
-function getAll(req,res) 
-{
-
+function getById(id) {
+    return product.findByPk(id)
 }
 
-function getById(req,res) 
-{
-
-}
-
-module.exports = {add,deleteById,updateById,getAll,getById}
+module.exports = { add, deleteById, updateById, getAll, getById }

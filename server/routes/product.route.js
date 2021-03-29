@@ -1,20 +1,14 @@
 const router = require("express").Router();
+const { productController } = require("../controllers")
 
+router.get("/", productController.getAll)
 
-router.get("/", (req, res) => {
-    //ürünleri getir SELECT
-})
+router.post("/", productController.add)
 
-router.post("/", (req, res) => {
-    //gönderilen veriyi ekle INSERT
-})
+router.get("/:id", productController.getById);
 
-router.get("/:id", (req, res) => {
-    //id ile eşleşen ürünü getir SELECT
-});
+router.post("/:id", productController.updateById)
 
-router.post("/:id", (req, res) => {
-    //id ile eşleşen ürünü güncelle UPDATE
-})
+router.delete("/:id", productController.deleteById)
 
 module.exports = router;
