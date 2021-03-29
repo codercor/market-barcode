@@ -1,7 +1,8 @@
 const fs = require("fs/promises")
 
 function log(msg) {
-    fs.appendFile(__dirname + '\\..\\database.log', msg + "\n");
+    let date = new Date();
+    fs.appendFile(__dirname + '\\..\\database.log', date.toLocaleDateString() + "-" + date.toLocaleTimeString() + "  " + msg + "\n");
 }
 
 module.exports = { log }
