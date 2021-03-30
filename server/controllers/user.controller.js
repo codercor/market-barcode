@@ -1,11 +1,17 @@
 const {userService} = require("../services");
+const {createToken} = require("../utils/token");
 
 async function login(req,res) 
 {
     const {email,password} = req.body;
     const status= await userService.login(email,password);
-    res.json({status});
-
+    if (status) {
+        const token = createToken({email,password})
+        res.json({status,token});
+    }else {
+        res.json({error:"failed"});
+    }
+ 
 }
 
 async function register(req,res) 
