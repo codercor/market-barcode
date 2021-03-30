@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
-class User extends Model { };
+class Category extends Model { };
 
-User.init({
+Category.init({
     name: {
         type: DataTypes.TEXT,
         allowNull: false
@@ -15,4 +15,4 @@ User.init({
 
 //Usr.sync({ force: true });
 
-module.exports = User;
+module.exports = Category;

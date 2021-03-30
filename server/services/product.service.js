@@ -9,7 +9,7 @@ function deleteById(id) {
 }
 
 function updateById(id, data) {
-
+    return product.update(data, { where: {id}});
 }
 
 function getAll() {

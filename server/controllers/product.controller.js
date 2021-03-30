@@ -15,8 +15,13 @@ async function deleteById(req, res) {
     res.json({ status })
 }
 
-function updateById(req, res) {
 
+async function updateById(req, res) {
+    const { id } = req.params;
+    const { productData } = req.body;
+
+    let product = await productService.updateById(id, productData);
+    res.json({ product})
 }
 
 async function getAll(req, res) {
