@@ -1,12 +1,18 @@
 const router = require("express").Router();
 const { productController } = require("../controllers")
-const {auth} = require("../middlewares");
+const { auth } = require("../middlewares");
 
-//router.use(auth);
+const { validate, } = require("express-validation");
 
-router.get("/",auth, productController.getAll)
+const { productValidation } = require("../validations")
 
-router.post("/", productController.add)
+router.use(auth);
+
+
+
+router.get("/", productController.getAll)
+
+router.post("/", validate(productValidation.addProduct), productController.add)
 
 router.get("/:id", productController.getById);
 

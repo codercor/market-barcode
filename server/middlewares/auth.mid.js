@@ -1,16 +1,15 @@
-const {checkToken} = require("../utils/token")
+const { checkToken } = require("../utils/token")
 
-function auth(req,res,next) {
-    const {token} = req.headers;
-    console.log(token)
+function auth(req, res, next) {
+  const { token } = req.headers;
 
-   try {
+  try {
     checkToken(token);
     next();
-   } catch (error) {
-     res.json({status:"Permission denied"})  
-   }
-    
+  } catch (error) {
+    res.json({ status: "Permission denied" })
+  }
+
 }
 
 module.exports = auth;
