@@ -5,7 +5,7 @@ class User extends Model { };
 User.init({
     companyId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue:1,
     },
     categoryId: {
         type: DataTypes.INTEGER,
