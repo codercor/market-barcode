@@ -9,20 +9,25 @@ module.exports = {
         barcode: Joi.string().required(),
         name: Joi.string().required(),
         unit: Joi.string().required(),
+        categoryId: Joi.number().required(),
         amount: Joi.string().required(),
       }),
     }),
   },
 
-  deleteProduct: {
+  idParam: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.string().required(),
     }),
   },
-
+  barcode: {
+    params: Joi.object({
+      barcode: Joi.string().required(),
+    }),
+  },
   updateProduct: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.string().required(),
     }),
     body: Joi.object({
       productData: Joi.object({

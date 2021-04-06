@@ -8,16 +8,20 @@ function deleteById(id) {
     return product.destroy({ where: { id } })
 }
 
+function getByBarcode(barcode, companyId) {
+    return product.findOne({ where: { barcode, companyId } })
+}
+
 function updateById(id, data) {
-    return product.update(data, { where: {id}});
+    return product.update(data, { where: { id } });
 }
 
-function getAll() {
-    return product.findAll({})
+function getAll(companyId) {
+    return product.findAll({ where: { companyId } })
 }
 
-function getById(id) {
-    return product.findByPk(id)
+function getById(id, companyId) {
+    return product.findOne({ where: { id, companyId } })
 }
 
-module.exports = { add, deleteById, updateById, getAll, getById }
+module.exports = { add, deleteById, updateById, getAll, getById, getByBarcode }

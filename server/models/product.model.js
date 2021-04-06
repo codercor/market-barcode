@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
-class User extends Model { };
+class Product extends Model { };
 
-User.init({
+Product.init({
     companyId: {
         type: DataTypes.INTEGER,
-        defaultValue:1,
+        defaultValue: 1,
     },
     categoryId: {
         type: DataTypes.INTEGER,
@@ -44,6 +44,6 @@ User.init({
     charset: "utf8",
 })
 
-//User.sync({ force: true });
+//Product.sync({ force: true });
 
-module.exports = User;
+module.exports = Product;

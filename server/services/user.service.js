@@ -1,8 +1,8 @@
 const { user } = require("../models");
 
 function login(email, password) {
-  const status = user.findOne({ where: { email, password } })
-  return status;
+  const result = user.findOne({ where: { email, password } })
+  return result;
 }
 
 function register(userData) {

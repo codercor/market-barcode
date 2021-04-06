@@ -1,1 +1,1 @@
- module.exports.auth = require("./auth.mid");
+module.exports.auth = require("./auth.mid");

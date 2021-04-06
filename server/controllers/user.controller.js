@@ -5,7 +5,8 @@ async function login(req, res) {
     const { email, password } = req.body;
     const status = await userService.login(email, password);
     if (status) {
-        const token = createToken({ email, password })
+        let id = status.dataValues.id;
+        const token = createToken({ email, password, id })
         res.json({ status, token });
     } else {
         res.json({ error: "failed" });

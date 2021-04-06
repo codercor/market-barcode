@@ -13,6 +13,6 @@ Category.init({
     charset: "utf8",
 })
 
-//Usr.sync({ force: true });
+//Category.sync({ force: true });
 
 module.exports = Category;

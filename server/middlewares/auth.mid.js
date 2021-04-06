@@ -4,7 +4,8 @@ function auth(req, res, next) {
   const { token } = req.headers;
 
   try {
-    checkToken(token);
+    let decoded = checkToken(token);
+    req.companyId = decoded.id;
     next();
   } catch (error) {
     res.json({ status: "Permission denied" })
