@@ -1,18 +1,45 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container class="py-8 px-6" fluid>
+    <v-row>
+      <v-col cols="12">
+        <v-card>
+          <v-subheader>selami</v-subheader>
+
+          <v-list two-line>
+            <template v-for="n in 6">
+              <v-list-item :key="n">
+                <v-list-item-avatar color="grey darken-1"> </v-list-item-avatar>
+
+                <v-list-item-content>
+                  <v-list-item-title>Message {{ n }}</v-list-item-title>
+
+                  <v-list-item-subtitle>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Nihil repellendus distinctio similique
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-divider v-if="n !== 6" :key="`divider-${n}`" inset></v-divider>
+            </template>
+          </v-list>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapGetters } from "vuex";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  beforeMount() {
+    if (!this.isLogin) this.$router.push("/login");
+  },
+  computed: {
+    ...mapGetters(["isLogin"]),
+  },
+};
 </script>
+
+<style>
+</style>

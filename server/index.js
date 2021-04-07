@@ -4,6 +4,7 @@ require("dotenv").config()
 
 
 app.use(express.json());
+app.use(require("cors")())
 
 const { ValidationError } = require("express-validation")
 
