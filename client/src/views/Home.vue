@@ -4,25 +4,7 @@
       <v-col cols="12">
         <v-card>
           <v-subheader>selami</v-subheader>
-
-          <v-list two-line>
-            <template v-for="n in 6">
-              <v-list-item :key="n">
-                <v-list-item-avatar color="grey darken-1"> </v-list-item-avatar>
-
-                <v-list-item-content>
-                  <v-list-item-title>Message {{ n }}</v-list-item-title>
-
-                  <v-list-item-subtitle>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Nihil repellendus distinctio similique
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-divider v-if="n !== 6" :key="`divider-${n}`" inset></v-divider>
-            </template>
-          </v-list>
+           <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
         </v-card>
       </v-col>
     </v-row>
@@ -31,9 +13,30 @@
 
 <script>
 import { mapGetters } from "vuex";
+
+
+
+
 export default {
+ 
   beforeMount() {
     if (!this.isLogin) this.$router.push("/login");
+  },
+  data(){
+    return {
+       readerSize: {
+        width: 640,
+        height: 480
+      },
+      detecteds: []
+    }
+  },
+  methods:{
+    logIt(data){
+      this.axios.get( `/product/barcode/${data.codeResult.code}`).then(res=>{
+        console.log(res);
+      })
+    }
   },
   computed: {
     ...mapGetters(["isLogin"]),

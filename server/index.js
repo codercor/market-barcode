@@ -8,6 +8,10 @@ app.use(require("cors")())
 
 const { ValidationError } = require("express-validation")
 
+app.use((req,res,next)=>{
+    console.log(req.headers);
+    next();
+})
 
 
 const { product: productRouter, user: userRouter } = require("./routes")

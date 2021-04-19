@@ -2,6 +2,9 @@
   <v-container class="py-8 px-6">
     <v-row>
       <v-col cols="6" offset="3">
+        <v-alert v-if="hasError" dense outlined type="error">
+          Your <strong>email</strong> or <strong>password</strong> wrong
+        </v-alert>
         <v-text-field
           label="Email"
           append-icon="mdi-email"
@@ -27,15 +30,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
+  beforeMount(){
+    if (this.isLogin) this.$router.push("/");
+  },
   data() {
     return {
       passwordVisibility: false,
       email: "",
       password: "",
+      hasError:false
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["isLogin"]),
+  },
   methods: {
     togglePassword() {
       this.passwordVisibility = !this.passwordVisibility;
@@ -51,8 +61,10 @@ export default {
           if (data.token) {
             this.$store.commit("setToken", data.token);
             this.$store.commit("setLogin", true);
+            this.hasError = false;
+            this.$router.push("/")
           } else {
-            console.log("BAŞARISIZ !");
+            this.hasError = true;
           }
         });
     },
