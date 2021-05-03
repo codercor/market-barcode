@@ -9,7 +9,7 @@ import _axios from 'axios'
 import VueAxios from 'vue-axios'
 
 let axios = _axios.create({
-  baseURL: "http://localhost:85/"
+  baseURL: "https://market-barcode.herokuapp.com/"
 })
 
 // axios ile istek gönderir isek burası isteği yakalayacak ve istek gitmeden fonksiyonu çalıştırıcak
